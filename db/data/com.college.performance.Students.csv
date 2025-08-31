@@ -1,0 +1,11 @@
+ID;firstName;lastName;dateOfBirth;email;enrollmentID
+stu-001;Alice;Sharma;2003-05-12;alice.sharma@example.com;ENR001
+stu-002;Bob;Patel;2002-11-21;bob.patel@example.com;ENR002
+stu-003;Charlie;Gupta;2003-02-03;charlie.gupta@example.com;ENR003
+stu-004;Diana;Rao;2002-07-15;diana.rao@example.com;ENR004
+stu-005;Ethan;Mehta;2003-09-25;ethan.mehta@example.com;ENR005
+stu-006;Fiona;Verma;2003-12-10;fiona.verma@example.com;ENR006
+stu-007;Gaurav;Singh;2002-08-08;gaurav.singh@example.com;ENR007
+stu-008;Hina;Kaur;2003-01-18;hina.kaur@example.com;ENR008
+stu-009;Ishan;Sharma;2002-10-02;ishan.sharma@example.com;ENR009
+stu-010;Jaya;Patel;2003-03-27;jaya.patel@example.com;ENR010

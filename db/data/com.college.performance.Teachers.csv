@@ -1,0 +1,6 @@
+ID;firstName;lastName;email;employeeID;department
+tch-001;John;Doe;john.doe@example.com;EMP001;Computer Science
+tch-002;Jane;Smith;jane.smith@example.com;EMP002;Computer Science
+tch-003;Rajesh;Kumar;rajesh.kumar@example.com;EMP003;Database
+tch-004;Priya;Singh;priya.singh@example.com;EMP004;Web Dev
+tch-005;Anil;Verma;anil.verma@example.com;EMP005;Java

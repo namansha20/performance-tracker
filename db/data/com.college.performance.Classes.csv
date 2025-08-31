@@ -1,0 +1,6 @@
+ID;title;classCode;description;teacher_ID
+cls-001;Introduction to Cloud Development;CS101;Basics of cloud computing and SAP BTP concepts;tch-001
+cls-002;Data Structures & Algorithms;CS102;Core programming concepts with problem-solving;tch-002
+cls-003;Database Systems;CS103;Relational databases, SQL, and SAP HANA basics;tch-003
+cls-004;Web Development with SAP Fiori;CS104;Building responsive UIs using SAP Fiori and UI5;tch-004
+cls-005;Object-Oriented Programming in Java;CS105;Java OOP concepts: classes, inheritance, polymorphism;tch-005

@@ -1,0 +1,11 @@
+ID;student_ID;exam_ID;score;comments
+pm-001;stu-001;exm-001;85;Good understanding of concepts
+pm-002;stu-002;exm-001;78;Needs improvement in practicals
+pm-003;stu-003;exm-003;92;Excellent problem-solving skills
+pm-004;stu-004;exm-004;88;Strong coding abilities
+pm-005;stu-005;exm-005;45;Project completed successfully
+pm-006;stu-006;exm-008;73;Good UI design
+pm-007;stu-007;exm-009;80;Solid OOP knowledge
+pm-008;stu-008;exm-006;28;Followed SDLC correctly
+pm-009;stu-009;exm-007;25;CAPM concepts clear
+pm-010;stu-010;exm-010;22;Needs more practice

@@ -1,0 +1,96 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "performancetracker",
+        "type": "application",
+        "title": "Student and Staff Performance Tracker",
+        "description": "An app to track performance metrics.",
+        "dataSources": {
+            "mainService": {
+                "uri": "/PerformanceService/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.108.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.fe.templates": {}
+            }
+        },
+        "models": {
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            }
+        },
+        "routing": {
+            "config": {},
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "StudentsList",
+                    "target": "StudentsList"
+                },
+                {
+                    "pattern": "Students({key}):?query:",
+                    "name": "StudentsObjectPage",
+                    "target": "StudentsObjectPage"
+                }
+            ],
+            "targets": {
+                "StudentsList": {
+                    "type": "Component",
+                    "id": "StudentsList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Students",
+                            "navigation": {
+                                "Students": {
+                                    "detail": {
+                                        "route": "StudentsObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "StudentsObjectPage": {
+                    "type": "Component",
+                    "id": "StudentsObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Students"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

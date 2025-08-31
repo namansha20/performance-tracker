@@ -1,0 +1,57 @@
+namespace com.college.performance;
+
+using { cuid, managed } from '@sap/cds/common';
+
+entity Students : cuid, managed {
+    firstName      : String(100) not null;
+    lastName       : String(100) not null;
+    dateOfBirth    : Date;
+    email          : String(255) @assert.unique;
+    enrollmentID   : String(50) @assert.unique;
+    enrollments    : Association to many ClassEnrollments on enrollments.student = $self;
+}
+
+entity Teachers : cuid, managed {
+    firstName      : String(100) not null;
+    lastName       : String(100) not null;
+    email          : String(255) @assert.unique;
+    employeeID     : String(50) @assert.unique;
+    department     : String(100);
+    classesTaught  : Association to many Classes on classesTaught.teacher = $self;
+}
+
+entity Classes : cuid, managed {
+    title          : String(150) not null;
+    classCode      : String(20) @assert.unique;
+    description    : LargeString;
+    teacher        : Association to Teachers;
+    enrollments    : Association to many ClassEnrollments on enrollments.class = $self;
+    exams          : Association to many Exams on exams.class = $self;
+}
+
+entity Exams : cuid, managed {
+    title          : String(100) not null;
+    examDate       : DateTime;
+    maxScore       : Integer default 100;
+    class          : Association to Classes;
+    scores         : Association to many PerformanceMetrics on scores.exam = $self;
+}
+
+entity ClassEnrollments : cuid, managed {
+    student        : Association to Students not null;
+    class          : Association to Classes not null;
+    enrollmentDate : Date;
+}
+
+entity PerformanceMetrics : cuid, managed {
+    student        : Association to Students not null;
+    exam           : Association to Exams not null;
+    score          : Decimal(5, 2);
+    comments       : LargeString;
+}
+
+
+
+
+
+

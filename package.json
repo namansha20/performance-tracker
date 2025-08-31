@@ -1,0 +1,33 @@
+{
+  "name": "performance-tracker",
+  "version": "1.0.0",
+  "description": "A CAP project to track student and staff performance.",
+  "repository": "<your-repository-url>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/sqlite": "^2.0.2",
+    "@sap/cds": "^9.2.1",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "^9.2.1",
+    "@sap/ux-ui5-tooling": "^1",
+    "sqlite3": "latest"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite"
+      }
+    },
+    "ux": {
+      "app": {
+        "module": "sap-ui5"
+      }
+    }
+  }
+}

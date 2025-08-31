@@ -1,0 +1,11 @@
+ID;student_ID;class_ID;enrollmentDate
+enr-001;stu-001;cls-001;2025-08-01
+enr-002;stu-002;cls-001;2025-08-02
+enr-003;stu-003;cls-002;2025-08-03
+enr-004;stu-004;cls-002;2025-08-04
+enr-005;stu-005;cls-003;2025-08-05
+enr-006;stu-006;cls-004;2025-08-06
+enr-007;stu-007;cls-005;2025-08-07
+enr-008;stu-008;cls-003;2025-08-08
+enr-009;stu-009;cls-004;2025-08-09
+enr-010;stu-010;cls-005;2025-08-10

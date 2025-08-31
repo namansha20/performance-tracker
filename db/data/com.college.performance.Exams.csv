@@ -1,0 +1,11 @@
+ID;title;examDate;maxScore;class_ID
+exm-001;Midterm Exam;2025-09-15T10:00:00;100;cls-001
+exm-002;Final Exam;2025-12-10T14:00:00;100;cls-001
+exm-003;Midterm Exam;2025-09-20T11:00:00;100;cls-002
+exm-004;Final Exam;2025-12-15T13:00:00;100;cls-002
+exm-005;Project Submission;2025-10-05T09:00:00;50;cls-003
+exm-006;Final Exam;2025-12-18T10:00:00;100;cls-003
+exm-007;Assignment 1;2025-09-25T12:00:00;20;cls-004
+exm-008;Final Exam;2025-12-20T15:00:00;100;cls-004
+exm-009;Midterm Exam;2025-09-30T09:30:00;100;cls-005
+exm-010;Final Exam;2025-12-22T11:00:00;100;cls-005
