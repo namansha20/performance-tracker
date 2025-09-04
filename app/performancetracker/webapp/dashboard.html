@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Performance Tracker Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script id="sap-ui-bootstrap"
+        src="https://ui5.sap.com/1.108.0/resources/sap-ui-core.js"
+        data-sap-ui-libs="sap.m,sap.ui.core"
+        data-sap-ui-theme="sap_horizon"
+        data-sap-ui-compatVersion="edge"
+        data-sap-ui-async="true"
+        data-sap-ui-frameOptions="allow">
+    </script>
+    <script>
+        sap.ui.getCore().attachInit(function() {
+            sap.ui.require([
+                "sap/m/App",
+                "sap/m/Page",
+                "sap/m/TileContainer",
+                "sap/m/StandardTile",
+                "sap/m/VBox",
+                "sap/m/Text",
+                "sap/m/Title"
+            ], function(App, Page, TileContainer, StandardTile, VBox, Text, Title) {
+                
+                // Create navigation tiles
+                var studentsTile = new StandardTile({
+                    title: "Students",
+                    info: "Manage Student Records & View Performance",
+                    icon: "sap-icon://person-placeholder",
+                    press: function() {
+                        window.open("./index.html#/Students", "_blank");
+                    }
+                });
+                
+                var teachersTile = new StandardTile({
+                    title: "Teachers",
+                    info: "Manage Teacher Records & Classes",
+                    icon: "sap-icon://employee",
+                    press: function() {
+                        window.open("./index.html#/Teachers", "_blank");
+                    }
+                });
+                
+                var classesTile = new StandardTile({
+                    title: "Classes",
+                    info: "Manage Classes & Enrollments",
+                    icon: "sap-icon://course-book",
+                    press: function() {
+                        window.open("./index.html#/Classes", "_blank");
+                    }
+                });
+                
+                var examsTile = new StandardTile({
+                    title: "Exams",
+                    info: "Manage Exams & View Statistics",
+                    icon: "sap-icon://document",
+                    press: function() {
+                        window.open("./index.html#/Exams", "_blank");
+                    }
+                });
+                
+                var performanceTile = new StandardTile({
+                    title: "Performance Metrics",
+                    info: "View & Manage Student Grades",
+                    icon: "sap-icon://line-chart",
+                    press: function() {
+                        window.open("./index.html#/PerformanceMetrics", "_blank");
+                    }
+                });
+                
+                var attendanceTile = new StandardTile({
+                    title: "Attendance",
+                    info: "Track Student Attendance",
+                    icon: "sap-icon://calendar",
+                    press: function() {
+                        window.open("./index.html#/AttendanceRecords", "_blank");
+                    }
+                });
+                
+                // Create main content
+                var headerTitle = new Title({
+                    text: "Performance Tracker System",
+                    level: "H2"
+                });
+                
+                var subtitle = new Text({
+                    text: "Select a module to manage student and staff performance data"
+                });
+                
+                var tileContainer = new TileContainer({
+                    tiles: [studentsTile, teachersTile, classesTile, examsTile, performanceTile, attendanceTile]
+                });
+                
+                var content = new VBox({
+                    items: [headerTitle, subtitle, tileContainer],
+                    alignItems: "Center"
+                });
+                
+                // Create page
+                var page = new Page({
+                    title: "Performance Tracker Dashboard",
+                    content: [content],
+                    showNavButton: false
+                });
+                
+                // Create app
+                var app = new App({
+                    pages: [page]
+                });
+                
+                // Place app in the body
+                app.placeAt("content");
+            });
+        });
+    </script>
+</head>
+<body class="sapUiBody" id="content">
+    <!-- Content will be rendered here -->
+</body>
+</html>

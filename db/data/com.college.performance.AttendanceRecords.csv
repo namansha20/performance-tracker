@@ -1,0 +1,14 @@
+ID;student_ID;class_ID;date;status;remarks
+att-001;stu-001;cls-001;2024-01-15;Present;
+att-002;stu-002;cls-001;2024-01-15;Present;
+att-003;stu-003;cls-001;2024-01-15;Absent;Sick leave
+att-004;stu-001;cls-001;2024-01-16;Present;
+att-005;stu-002;cls-001;2024-01-16;Late;Traffic delay
+att-006;stu-003;cls-001;2024-01-16;Present;
+att-007;stu-001;cls-002;2024-01-17;Present;
+att-008;stu-002;cls-002;2024-01-17;Present;
+att-009;stu-003;cls-002;2024-01-17;Present;
+att-010;stu-004;cls-001;2024-01-15;Present;
+att-011;stu-004;cls-001;2024-01-16;Absent;Family emergency
+att-012;stu-005;cls-001;2024-01-15;Present;
+att-013;stu-005;cls-001;2024-01-16;Present;

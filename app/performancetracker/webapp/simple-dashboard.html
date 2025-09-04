@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Performance Tracker - Simple Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card-icon {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .card-description {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            border-left: 4px solid #007bff;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .navigation-section {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        
+        /* Color scheme for different cards */
+        .students { border-left-color: #28a745; }
+        .students .card-icon { color: #28a745; }
+        
+        .teachers { border-left-color: #007bff; }
+        .teachers .card-icon { color: #007bff; }
+        
+        .classes { border-left-color: #ffc107; }
+        .classes .card-icon { color: #ffc107; }
+        
+        .exams { border-left-color: #dc3545; }
+        .exams .card-icon { color: #dc3545; }
+        
+        .performance { border-left-color: #6f42c1; }
+        .performance .card-icon { color: #6f42c1; }
+        
+        .attendance { border-left-color: #20c997; }
+        .attendance .card-icon { color: #20c997; }
+        
+        #loading {
+            text-align: center;
+            color: #666;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Performance Tracker Dashboard</h1>
+            <p>Comprehensive Student & Staff Performance Management System</p>
+        </div>
+        
+        <div id="loading">Loading statistics...</div>
+        
+        <div class="stats-grid" id="stats" style="display: none;">
+            <div class="stat-card">
+                <div class="stat-number" id="student-count">0</div>
+                <div class="stat-label">Total Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="teacher-count">0</div>
+                <div class="stat-label">Total Teachers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="class-count">0</div>
+                <div class="stat-label">Active Classes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="exam-count">0</div>
+                <div class="stat-label">Total Exams</div>
+            </div>
+        </div>
+        
+        <div class="navigation-section">
+            <div class="nav-title">System Modules</div>
+            <div class="dashboard-grid">
+                <div class="card students" onclick="openModule('/odata/v4/performance/Students')">
+                    <div class="card-icon">👨‍🎓</div>
+                    <div class="card-title">Students</div>
+                    <div class="card-description">Manage student records, view performance, and track academic progress</div>
+                </div>
+                
+                <div class="card teachers" onclick="openModule('/odata/v4/performance/Teachers')">
+                    <div class="card-icon">👩‍🏫</div>
+                    <div class="card-title">Teachers</div>
+                    <div class="card-description">Manage teacher profiles, assigned classes, and teaching schedules</div>
+                </div>
+                
+                <div class="card classes" onclick="openModule('/odata/v4/performance/Classes')">
+                    <div class="card-icon">📚</div>
+                    <div class="card-title">Classes</div>
+                    <div class="card-description">Manage class schedules, enrollments, and course information</div>
+                </div>
+                
+                <div class="card exams" onclick="openModule('/odata/v4/performance/Exams')">
+                    <div class="card-icon">📋</div>
+                    <div class="card-title">Exams</div>
+                    <div class="card-description">Create and manage exams, view statistics and performance analytics</div>
+                </div>
+                
+                <div class="card performance" onclick="openModule('/odata/v4/performance/PerformanceMetrics')">
+                    <div class="card-icon">📈</div>
+                    <div class="card-title">Performance Metrics</div>
+                    <div class="card-description">Track student grades, calculate GPA, and generate performance reports</div>
+                </div>
+                
+                <div class="card attendance" onclick="openModule('/odata/v4/performance/AttendanceRecords')">
+                    <div class="card-icon">📅</div>
+                    <div class="card-title">Attendance</div>
+                    <div class="card-description">Record and track student attendance across all classes</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px; padding: 20px; background: white; border-radius: 8px; text-align: center; color: #666;">
+            <p><strong>Quick Access:</strong></p>
+            <p>
+                <a href="analytics.html" target="_blank">📈 Performance Analytics</a> | 
+                <a href="/odata/v4/performance/$metadata" target="_blank">📊 API Metadata</a> | 
+                <a href="/odata/v4/performance" target="_blank">🔗 Service Root</a> | 
+                <a href="/$fiori-preview" target="_blank">🖥️ Fiori Preview</a>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Load statistics
+        async function loadStats() {
+            try {
+                const [students, teachers, classes, exams] = await Promise.all([
+                    fetch('/odata/v4/performance/Students/$count').then(r => r.text()),
+                    fetch('/odata/v4/performance/Teachers/$count').then(r => r.text()),
+                    fetch('/odata/v4/performance/Classes/$count').then(r => r.text()),
+                    fetch('/odata/v4/performance/Exams/$count').then(r => r.text())
+                ]);
+                
+                document.getElementById('student-count').textContent = students;
+                document.getElementById('teacher-count').textContent = teachers;
+                document.getElementById('class-count').textContent = classes;
+                document.getElementById('exam-count').textContent = exams;
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('stats').style.display = 'grid';
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                document.getElementById('loading').textContent = 'Error loading statistics';
+            }
+        }
+        
+        function openModule(url) {
+            window.open(url, '_blank');
+        }
+        
+        // Load stats on page load
+        loadStats();
+    </script>
+</body>
+</html>
