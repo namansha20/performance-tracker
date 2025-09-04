@@ -13,10 +13,16 @@
   "devDependencies": {
     "@sap/cds-dk": "^9.2.1",
     "@sap/ux-ui5-tooling": "^1",
-    "sqlite3": "latest"
+    "sqlite3": "latest",
+    "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-students": "cds watch --open students/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-teachers": "cds watch --open fioriui.teachers/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-classes": "cds watch --open classui.classes/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-attendancerecord": "cds watch --open attendancerecord.attendancerecord/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-exams": "cds watch --open exams.exams/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "cds": {
     "requires": {
@@ -29,5 +35,15 @@
         "module": "sap-ui5"
       }
     }
-  }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/students",
+    "app/teachers",
+    "app/classes",
+    "app/attendancerecord",
+    "app/exams"
+  ]
 }

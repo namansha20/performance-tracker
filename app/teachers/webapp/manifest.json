@@ -1,0 +1,164 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "fioriui.teachers",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.18.6",
+      "toolsId": "a8f01384-4d30-432c-801b-0227546f97b0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/performance/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.139.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "fioriui.teachers.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "TeachersList",
+          "target": "TeachersList"
+        },
+        {
+          "pattern": "Teachers({key}):?query:",
+          "name": "TeachersObjectPage",
+          "target": "TeachersObjectPage"
+        },
+        {
+          "pattern": "Teachers({key})/classesTaught({key2}):?query:",
+          "name": "ClassesObjectPage",
+          "target": "ClassesObjectPage"
+        }
+      ],
+      "targets": {
+        "TeachersList": {
+          "type": "Component",
+          "id": "TeachersList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Teachers",
+              "variantManagement": "Page",
+              "navigation": {
+                "Teachers": {
+                  "detail": {
+                    "route": "TeachersObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "GridTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "TeachersObjectPage": {
+          "type": "Component",
+          "id": "TeachersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Teachers",
+              "navigation": {
+                "classesTaught": {
+                  "detail": {
+                    "route": "ClassesObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ClassesObjectPage": {
+          "type": "Component",
+          "id": "ClassesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Teachers/classesTaught"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}
