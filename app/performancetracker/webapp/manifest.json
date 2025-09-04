@@ -4,10 +4,10 @@
         "id": "performancetracker",
         "type": "application",
         "title": "Student and Staff Performance Tracker",
-        "description": "An app to track performance metrics.",
+        "description": "An app to track performance metrics with role-based dashboards.",
         "dataSources": {
             "mainService": {
-                "uri": "/PerformanceService/",
+                "uri": "/odata/v4/performance/",
                 "type": "OData",
                 "settings": {
                     "odataVersion": "4.0"
@@ -21,7 +21,8 @@
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
-                "sap.fe.templates": {}
+                "sap.fe.templates": {},
+                "sap.suite.ui.commons": {}
             }
         },
         "models": {
@@ -48,6 +49,46 @@
                     "pattern": "Students({key}):?query:",
                     "name": "StudentsObjectPage",
                     "target": "StudentsObjectPage"
+                },
+                {
+                    "pattern": "Teachers:?query:",
+                    "name": "TeachersList",
+                    "target": "TeachersList"
+                },
+                {
+                    "pattern": "Teachers({key}):?query:",
+                    "name": "TeachersObjectPage",
+                    "target": "TeachersObjectPage"
+                },
+                {
+                    "pattern": "Classes:?query:",
+                    "name": "ClassesList",
+                    "target": "ClassesList"
+                },
+                {
+                    "pattern": "Classes({key}):?query:",
+                    "name": "ClassesObjectPage",
+                    "target": "ClassesObjectPage"
+                },
+                {
+                    "pattern": "Exams:?query:",
+                    "name": "ExamsList",
+                    "target": "ExamsList"
+                },
+                {
+                    "pattern": "Exams({key}):?query:",
+                    "name": "ExamsObjectPage",
+                    "target": "ExamsObjectPage"
+                },
+                {
+                    "pattern": "PerformanceMetrics:?query:",
+                    "name": "PerformanceMetricsList",
+                    "target": "PerformanceMetricsList"
+                },
+                {
+                    "pattern": "AttendanceRecords:?query:",
+                    "name": "AttendanceRecordsList",
+                    "target": "AttendanceRecordsList"
                 }
             ],
             "targets": {
@@ -75,6 +116,107 @@
                     "options": {
                         "settings": {
                             "entitySet": "Students"
+                        }
+                    }
+                },
+                "TeachersList": {
+                    "type": "Component",
+                    "id": "TeachersList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Teachers",
+                            "navigation": {
+                                "Teachers": {
+                                    "detail": {
+                                        "route": "TeachersObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "TeachersObjectPage": {
+                    "type": "Component",
+                    "id": "TeachersObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Teachers"
+                        }
+                    }
+                },
+                "ClassesList": {
+                    "type": "Component",
+                    "id": "ClassesList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Classes",
+                            "navigation": {
+                                "Classes": {
+                                    "detail": {
+                                        "route": "ClassesObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "ClassesObjectPage": {
+                    "type": "Component",
+                    "id": "ClassesObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Classes"
+                        }
+                    }
+                },
+                "ExamsList": {
+                    "type": "Component",
+                    "id": "ExamsList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Exams",
+                            "navigation": {
+                                "Exams": {
+                                    "detail": {
+                                        "route": "ExamsObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "ExamsObjectPage": {
+                    "type": "Component",
+                    "id": "ExamsObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Exams"
+                        }
+                    }
+                },
+                "PerformanceMetricsList": {
+                    "type": "Component",
+                    "id": "PerformanceMetricsList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "PerformanceMetrics"
+                        }
+                    }
+                },
+                "AttendanceRecordsList": {
+                    "type": "Component",
+                    "id": "AttendanceRecordsList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "AttendanceRecords"
                         }
                     }
                 }
