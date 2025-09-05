@@ -162,37 +162,37 @@
         <div class="navigation-section">
             <div class="nav-title">System Modules</div>
             <div class="dashboard-grid">
-                <div class="card students" onclick="openModule('/odata/v4/performance/Students')">
+                <div class="card students" onclick="openModule('/students/webapp/index.html')">
                     <div class="card-icon">👨‍🎓</div>
                     <div class="card-title">Students</div>
                     <div class="card-description">Manage student records, view performance, and track academic progress</div>
                 </div>
                 
-                <div class="card teachers" onclick="openModule('/odata/v4/performance/Teachers')">
+                <div class="card teachers" onclick="openModule('/teachers/webapp/index.html')">
                     <div class="card-icon">👩‍🏫</div>
                     <div class="card-title">Teachers</div>
                     <div class="card-description">Manage teacher profiles, assigned classes, and teaching schedules</div>
                 </div>
                 
-                <div class="card classes" onclick="openModule('/odata/v4/performance/Classes')">
+                <div class="card classes" onclick="openModule('/classes/webapp/index.html')">
                     <div class="card-icon">📚</div>
                     <div class="card-title">Classes</div>
                     <div class="card-description">Manage class schedules, enrollments, and course information</div>
                 </div>
                 
-                <div class="card exams" onclick="openModule('/odata/v4/performance/Exams')">
+                <div class="card exams" onclick="openModule('/exams/webapp/index.html')">
                     <div class="card-icon">📋</div>
                     <div class="card-title">Exams</div>
                     <div class="card-description">Create and manage exams, view statistics and performance analytics</div>
                 </div>
                 
-                <div class="card performance" onclick="openModule('/odata/v4/performance/PerformanceMetrics')">
+                <div class="card performance" onclick="openModule('/performancemetrics/webapp/index.html')">
                     <div class="card-icon">📈</div>
                     <div class="card-title">Performance Metrics</div>
                     <div class="card-description">Track student grades, calculate GPA, and generate performance reports</div>
                 </div>
                 
-                <div class="card attendance" onclick="openModule('/odata/v4/performance/AttendanceRecords')">
+                <div class="card attendance" onclick="openModule('/attendancerecords/webapp/index.html')">
                     <div class="card-icon">📅</div>
                     <div class="card-title">Attendance</div>
                     <div class="card-description">Record and track student attendance across all classes</div>
@@ -212,7 +212,6 @@
     </div>
     
     <script>
-        // Load statistics
         async function loadStats() {
             try {
                 const [students, teachers, classes, exams] = await Promise.all([
@@ -235,11 +234,10 @@
             }
         }
         
-        function openModule(url) {
-            window.open(url, '_blank');
-        }
+        function openModule(path) {
+    window.location.href = path; 
+}
         
-        // Load stats on page load
         loadStats();
     </script>
 </body>

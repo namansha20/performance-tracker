@@ -22,7 +22,9 @@
     "watch-teachers": "cds watch --open fioriui.teachers/index.html?sap-ui-xx-viewCache=false --livereload false",
     "watch-classes": "cds watch --open classui.classes/index.html?sap-ui-xx-viewCache=false --livereload false",
     "watch-attendancerecord": "cds watch --open attendancerecord.attendancerecord/index.html?sap-ui-xx-viewCache=false --livereload false",
-    "watch-exams": "cds watch --open exams.exams/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "watch-exams": "cds watch --open exams.exams/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-performancemetrics": "cds watch --open peformance.performancemetrics/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-classenroll": "cds watch --open classenroll.classenroll/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "cds": {
     "requires": {
@@ -44,6 +46,8 @@
     "app/teachers",
     "app/classes",
     "app/attendancerecord",
-    "app/exams"
+    "app/exams",
+    "app/performancemetrics",
+    "app/classenroll"
   ]
 }

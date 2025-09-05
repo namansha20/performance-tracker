@@ -8,3 +8,7 @@ using from './classes/annotations';
 using from './attendancerecord/annotations';
 
 using from './exams/annotations';
+
+using from './performancemetrics/annotations';
+
+using from './classenroll/annotations';
