@@ -10,7 +10,6 @@ entity Students : cuid, managed {
     enrollmentID   : String(50) @assert.unique;
     enrollments    : Association to many ClassEnrollments on enrollments.student = $self;
     attendanceRecords : Association to many AttendanceRecords on attendanceRecords.student = $self;
-    // Calculated field for GPA
     gpa            : Decimal(3, 2) @readonly;
 }
 
@@ -38,7 +37,6 @@ entity Exams : cuid, managed {
     maxScore       : Integer default 100 @assert.range: [1, 200];
     class          : Association to Classes;
     scores         : Association to many PerformanceMetrics on scores.exam = $self;
-    // Calculated fields
     averageScore   : Decimal(5, 2) @readonly;
     passRate       : Decimal(5, 2) @readonly; // Percentage of students who passed
 }
