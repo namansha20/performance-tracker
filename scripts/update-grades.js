@@ -6,8 +6,6 @@ async function updateGrades() {
             kind: 'sqlite',
             database: './db.sqlite'
         });
-        
-        // Calculate grade based on score
         function calculateGrade(score, maxScore = 100) {
             const percentage = (score / maxScore) * 100;
             if (percentage >= 97) return 'A+';
@@ -22,8 +20,6 @@ async function updateGrades() {
             if (percentage >= 60) return 'D';
             return 'F';
         }
-
-        // Get all performance metrics
         const metrics = await db.run(
             'SELECT pm.ID, pm.score, pm.student_ID, e.maxScore FROM com_college_performance_PerformanceMetrics pm ' +
             'JOIN com_college_performance_Exams e ON pm.exam_ID = e.ID'
@@ -85,5 +81,4 @@ async function updateGrades() {
         process.exit(1);
     }
 }
-
 updateGrades();
