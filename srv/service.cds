@@ -29,7 +29,6 @@ service PerformanceService {
 
 // --- ANNOTATIONS FOR THE UI ---
 
-// Annotate the Students Entity
 annotate PerformanceService.Students with @(
     UI.LineItem : [ // Defines the columns in the list view
         { Value: enrollmentID, Label: 'Enrollment ID' },
@@ -69,7 +68,6 @@ annotate PerformanceService.Students with @(
     }]
 );
 
-// Annotate the Teachers Entity
 annotate PerformanceService.Teachers with @(
     UI.LineItem : [
         { Value: employeeID, Label: 'Employee ID' },
@@ -104,7 +102,6 @@ annotate PerformanceService.Teachers with @(
     }]
 );
 
-// Annotate the Classes Entity
 annotate PerformanceService.Classes with @(
     UI.LineItem : [
         { Value: classCode, Label: 'Class Code' },
@@ -141,7 +138,6 @@ annotate PerformanceService.Classes with @(
     }]
 );
 
-// Annotate the Exams Entity
 annotate PerformanceService.Exams with @(
     UI.LineItem : [
         { Value: title, Label: 'Exam Title' },
@@ -167,7 +163,6 @@ annotate PerformanceService.Exams with @(
     }
 );
 
-// Annotate the PerformanceMetrics Entity
 annotate PerformanceService.PerformanceMetrics with @(
     UI.LineItem : [
         { Value: student.firstName, Label: 'Student' },
@@ -193,7 +188,6 @@ annotate PerformanceService.PerformanceMetrics with @(
     }
 );
 
-// Annotate the AttendanceRecords Entity
 annotate PerformanceService.AttendanceRecords with @(
     UI.LineItem : [
         { Value: student.firstName, Label: 'Student' },
@@ -219,7 +213,6 @@ annotate PerformanceService.AttendanceRecords with @(
     }
 );
 
-// Annotate the ClassEnrollments Entity
 annotate PerformanceService.ClassEnrollments with @(
     UI.LineItem : [
         { Value: student.firstName, Label: 'Student Name' },
