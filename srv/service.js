@@ -1,7 +1,6 @@
 module.exports = (srv) => {
     const { Students, PerformanceMetrics, Exams } = srv.entities;
 
-    // Calculate grade based on score
     function calculateGrade(score, maxScore = 100) {
         const percentage = (score / maxScore) * 100;
         if (percentage >= 97) return 'A+';
@@ -17,7 +16,6 @@ module.exports = (srv) => {
         return 'F';
     }
 
-    // Before creating PerformanceMetrics, calculate grade
     srv.before('CREATE', 'PerformanceMetrics', async (req) => {
         console.log('Before CREATE PerformanceMetrics:', req.data);
         const data = req.data;
@@ -31,7 +29,6 @@ module.exports = (srv) => {
         }
     });
 
-    // Before updating PerformanceMetrics, calculate grade  
     srv.before('UPDATE', 'PerformanceMetrics', async (req) => {
         console.log('Before UPDATE PerformanceMetrics:', req.data);
         const data = req.data;
@@ -51,7 +48,6 @@ module.exports = (srv) => {
         }
     });
 
-    // After CREATE/UPDATE - calculate GPA
     srv.after(['CREATE', 'UPDATE'], 'PerformanceMetrics', async (data, req) => {
         console.log('After CREATE/UPDATE PerformanceMetrics:', data);
         if (data.student_ID) {
@@ -71,7 +67,7 @@ module.exports = (srv) => {
             for (const perf of performances) {
                 const gradePoints = getGradePoints(perf.grade);
                 totalPoints += gradePoints;
-                totalCredits += 1; // Each exam has 1 credit
+                totalCredits += 1; 
             }
 
             const gpa = totalCredits > 0 ? (totalPoints / totalCredits) : 0.0;
@@ -90,7 +86,6 @@ module.exports = (srv) => {
         return gradePoints[grade] || 0.0;
     }
 
-    // Add computed fields for analytics
     srv.after('READ', 'Exams', async (exams) => {
         if (Array.isArray(exams)) {
             for (const exam of exams) {
